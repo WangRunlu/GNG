@@ -16,3 +16,4 @@ RUN pip install --upgrade pip && \
 
 # 进入 bash，方便交互
 CMD ["bash"]
+
