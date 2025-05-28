@@ -1,19 +1,12 @@
+# 选用老版本 Python 3.6，兼容旧依赖
 FROM python:3.6
 
 WORKDIR /workspace
-
-# 复制项目代码进容器
 COPY . /workspace
 
-# 安装系统依赖
-RUN apt-get update && \
-    apt-get install -y build-essential libgmp-dev imagemagick && \
-    rm -rf /var/lib/apt/lists/*
+# 先升 pip，再分两步装依赖
+RUN pip install --upgrade pip
+RUN pip install numpy==1.13.1
+RUN pip install networkx==2.0 imageio==2.2.0 matplotlib==2.0.2 future==0.16.0
 
-# 安装 Python 依赖
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
-
-# 进入 bash，方便交互
 CMD ["bash"]
-
