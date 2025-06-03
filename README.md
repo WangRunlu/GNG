@@ -27,6 +27,33 @@ We address the problem of generating navigation roadmaps for uncertain and clutt
 
 ## Usage
 ```
+需要的，你必须进入你自己单独创建的docker环境，以避免干扰服务器上的其他用户。
+
+正确的方式：
+
+1. 进入服务器：
+
+ssh bdi@101.200.33.217 -p 52103
+
+2. 确保数据集已下载到对应目录（服务器中）：
+
+cd ~/GNG/dataset
+wget https://raw.githubusercontent.com/manishsaroya/GNG/master/dataset/mapdata_4798.pickle
+
+3. 进入你自己的docker容器环境（不会干扰其他用户）：
+
+cd ~/GNG
+docker run --rm -it -v $PWD:/workspace gng:py36-full bash
+
+这一步会进入你自己的docker容器内的独立环境，所有依赖和包的安装都会局限于这个容器中，不会污染服务器的环境。
+
+4. 在docker容器中运行代码：
+
+PYTHONPATH=. python persistence/gng_neupy_run.py --map_type 4798
+
+退出容器后，这些变动也不会影响服务器或他人的环境。
+
+因此一定要使用你自己的docker环境来运行，避免直接在服务器的全局环境里操作，以防干扰到其他人。
 python persistence/gng_neupy_run.py
 ```
 
