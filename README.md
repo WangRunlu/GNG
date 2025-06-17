@@ -59,3 +59,8 @@ python persistence/gng_neupy_run.py
 
 ## Roadmap
    ![](https://github.com/manishsaroya/GNG/blob/master/gng.gif)
+   conda activate gng_py36
+
+PYTHONPATH=. python persistence/gng_neupy_run.py --map_type intel
+
+PYTHONPATH=. python persistence/gng_neupy_run.py --map_type bhm
